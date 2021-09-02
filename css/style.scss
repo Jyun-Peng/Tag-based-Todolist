@@ -1,0 +1,231 @@
+$white: #efefef;
+$gray: #ccc; 
+$dark-gray: #aaa;
+$btn: #555;
+$btn-hover: #666;
+$btn-click: #333;
+
+$active: #b746f0;
+$mask: rgba(0,0,0,0.5);
+$tag: rgb(219, 72, 72);
+$tag-chosen: rgb(42, 219, 42);
+
+@mixin tag {
+    color: $white;
+    padding: 6px 12px;
+    border-radius: 14px;
+    background-color: $tag;
+}
+
+
+
+*{
+    position: relative;
+    box-sizing: border-box;
+}
+html,body{
+    user-select: none;
+    font-family: 'Noto Sans TC', sans-serif , '微軟正黑體', Arial ;
+    font-size: 16px;
+    line-height: 1;
+}
+
+ul,li{
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+}
+
+input[type ='text']{
+    padding: 0 16px;
+    border: 2px solid $white;
+    line-height: 32px;
+    font-size: 16px;
+    border-radius: 18px;
+}
+input[type='text']:focus{
+    outline: none;
+    border: 2px solid $active;
+}
+
+li>.btn{
+    display: inline-block;
+    border: 1px solid #000;
+    width: 32px;
+    line-height: 32px;
+    text-align: center;
+}
+li>h3{
+    display: inline-block;
+    line-height: 2;
+}
+li{
+    display: flex;
+    align-items: center;
+}
+
+
+.btn{
+    font-size: 20px;
+    color: $btn;
+    cursor: pointer;
+
+    &:hover{
+        color:$btn-hover;
+    }
+    &:active{
+        color: $btn-click;
+    }
+}
+
+
+.choose-tag-wrapper{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: $mask;
+    z-index: 100;
+
+    &.active{
+        display: flex;
+    }
+
+    &>.choose-tag-container{
+        width: 400px;
+        height: 400px;
+        background-color: $white;
+        padding: 16px;
+
+        &>.tag-group{
+            display: flex;
+            justify-self: flex-start;
+            flex-wrap: wrap;
+            &>.tag{
+                @include tag;
+                margin: 4px 2px;
+
+                &.active{
+                    background-color: $tag-chosen;
+                }
+            }
+        }
+        &>.btn-group{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.left{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 360px;
+    height: 100vh;
+    padding: 40px;
+
+    background-color: $white;
+}
+
+.main{
+    width: 600px;
+    min-height: 100%;
+    background-color: $white;
+    
+    &>.add{
+        width: 600px;
+        padding: 20px 40px 40px 40px;
+        position: fixed;
+        top: 0;
+        border-bottom: 2px solid $gray;
+
+        z-index: 10;
+
+        &>.title{
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        &>.input-container{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin-bottom: 20px;
+
+            &>.btn--choose-tag{
+            }
+
+            &>.todo-input{
+                width: 60%;
+                margin-right: 16px;
+            }
+        }
+
+        &>.chosen-tags-group{
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap;
+            height: 28px;
+            margin-bottom: 16px;
+
+            &>.tag{
+                @include tag;
+
+                &:not(:last-child){
+                    margin-right:2px;
+                }
+            }
+        }
+
+        &>.btn--create-todo{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            font-size: 32px;
+            color: $dark-gray;
+            background-color: transparent;
+            cursor: auto;
+
+
+            &.active{
+                color: $white;
+                background-color: $active;
+                cursor: pointer;
+                &:hover{
+                    background-color: #bf5ff0;
+                }
+                &:active{
+                    background-color: #9e2fd6;
+                }
+            }
+        }
+    }
+    &>.todo-list{
+        border: 1px solid red;
+        padding: 0 40px;
+        margin-top: 200px;
+    }
+
+}
+
+.wrapper{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    background-color: $dark-gray;
+}

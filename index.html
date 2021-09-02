@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./vendor/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="./vendor/fontawesome/css/brands.css">
+    <link rel="stylesheet" href="./vendor/fontawesome/css/solid.css">
+
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <div class="add">
+                <h1 class="title">Todolist</h1>
+                <div class="input-container">
+                    <input class="todo-input" type="text" placeholder="新增事項"/>
+                    <div class="btn btn--choose-tag"><i class="fas fa-tags"></i></div>
+                </div>
+                <div class="chosen-tags-group">
+                </div>
+                <div class="btn btn--create-todo">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+            <div class="todo-list"></div>
+        </div>
+        <div class="left">
+            <input class="tag-input" type="text"  placeholder="新增標籤">
+            <div class="btn btn--create-tag">+</div>
+            <div class="tag-list"></div>
+        </div>
+        <div class="choose-tag-wrapper">
+            <div class="choose-tag-container">
+                <h1>選擇標籤</h1>
+                <div class="tag-group">
+                </div>
+                <div class="btn-group">
+                    <div class="btn btn--tag-cancel">取消</div>
+                    <div class="btn btn--tag-confirm">確認</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./todolist.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+@charset "UTF-8";
+* {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-family: 'Noto Sans TC', sans-serif , '微軟正黑體', Arial;
+  font-size: 16px;
+  line-height: 1;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+input[type='text'] {
+  padding: 0 16px;
+  border: 2px solid #efefef;
+  line-height: 32px;
+  font-size: 16px;
+  border-radius: 18px;
+}
+
+input[type='text']:focus {
+  outline: none;
+  border: 2px solid #b746f0;
+}
+
+li > .btn {
+  display: inline-block;
+  border: 1px solid #000;
+  width: 32px;
+  line-height: 32px;
+  text-align: center;
+}
+
+li > h3 {
+  display: inline-block;
+  line-height: 2;
+}
+
+li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #666;
+}
+
+.btn:active {
+  color: #333;
+}
+
+.choose-tag-wrapper {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.choose-tag-wrapper.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.choose-tag-wrapper > .choose-tag-container {
+  width: 400px;
+  height: 400px;
+  background-color: #efefef;
+  padding: 16px;
+}
+
+.choose-tag-wrapper > .choose-tag-container > .tag-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.choose-tag-wrapper > .choose-tag-container > .tag-group > .tag {
+  color: #efefef;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background-color: #db4848;
+  margin: 4px 2px;
+}
+
+.choose-tag-wrapper > .choose-tag-container > .tag-group > .tag.active {
+  background-color: #2adb2a;
+}
+
+.choose-tag-wrapper > .choose-tag-container > .btn-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 100vh;
+  padding: 40px;
+  background-color: #efefef;
+}
+
+.main {
+  width: 600px;
+  min-height: 100%;
+  background-color: #efefef;
+}
+
+.main > .add {
+  width: 600px;
+  padding: 20px 40px 40px 40px;
+  position: fixed;
+  top: 0;
+  border-bottom: 2px solid #ccc;
+  z-index: 10;
+}
+
+.main > .add > .title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.main > .add > .input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+
+.main > .add > .input-container > .todo-input {
+  width: 60%;
+  margin-right: 16px;
+}
+
+.main > .add > .chosen-tags-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 28px;
+  margin-bottom: 16px;
+}
+
+.main > .add > .chosen-tags-group > .tag {
+  color: #efefef;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background-color: #db4848;
+}
+
+.main > .add > .chosen-tags-group > .tag:not(:last-child) {
+  margin-right: 2px;
+}
+
+.main > .add > .btn--create-todo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 32px;
+  color: #aaa;
+  background-color: transparent;
+  cursor: auto;
+}
+
+.main > .add > .btn--create-todo.active {
+  color: #efefef;
+  background-color: #b746f0;
+  cursor: pointer;
+}
+
+.main > .add > .btn--create-todo.active:hover {
+  background-color: #bf5ff0;
+}
+
+.main > .add > .btn--create-todo.active:active {
+  background-color: #9e2fd6;
+}
+
+.main > .todo-list {
+  border: 1px solid red;
+  padding: 0 40px;
+  margin-top: 200px;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #aaa;
+}
+/*# sourceMappingURL=style.css.map */
