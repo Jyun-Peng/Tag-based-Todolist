@@ -1,57 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="./vendor/fontawesome/css/fontawesome.css">
-    <link rel="stylesheet" href="./vendor/fontawesome/css/brands.css">
-    <link rel="stylesheet" href="./vendor/fontawesome/css/solid.css">
+        <link rel="stylesheet" href="./vendor/fontawesome/css/fontawesome.css" />
+        <link rel="stylesheet" href="./vendor/fontawesome/css/brands.css" />
+        <link rel="stylesheet" href="./vendor/fontawesome/css/solid.css" />
 
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <div class="wrapper">
-        <div class="main">
-            <div class="add">
-                <h1 class="title">Todolist</h1>
-                <div class="input-container">
-                    <input class="todo-input" type="text" placeholder="新增事項"/>
-                    <div class="btn btn--choose-tag"><i class="fas fa-tags"></i></div>
-                </div>
-                <div class="chosen-tags-group">
-                </div>
-                <div class="btn btn--create-todo">
-                    <i class="fas fa-plus"></i>
+        <link rel="stylesheet" href="./css/normalize.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="left">
+                <div class="mask"></div>
+                <div class="tag-panel js-tag-panel">
+                    <div class="container--top">
+                        <h1 class="title main-title">Tag List</h1>
+                        <div class="btn btn--icon js-btn--edit-tags"><i class="fas fa-pen"></i></div>
+                    </div>
+                    <div class="input-form">
+                        <input class="input js-input--create-tag" type="text" placeholder="新增標籤" />
+                        <div class="btn btn--icon js-btn--create-tag"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="tag-list not-editing"></div>
+                    <div class="btn-group">
+                        <div class="btn js-btn--close-tag-panel">關閉</div>
+                    </div>
                 </div>
             </div>
-            <div class="todo-list"></div>
+            <div class="main js-main">
+                <div class="create-todo-panel">
+                    <div class="container--top">
+                        <h1 class="title main-title">Todo List</h1>
+                        <div class="btn btn--icon js-btn--choose-to-delete"><i class="fas fa-edit"></i></div>
+                    </div>
+                    <div class="input-form">
+                        <input class="input js-input--create-todo" type="text" placeholder="新增事項" />
+                        <div class="btn btn--icon btn--open-tag-panel js-btn--open-tag-panel"><i class="fas fa-filter"></i></i></div>
+                        <div class="btn btn--switch-mode js-btn--switch-mode">未完成</div>
+                    </div>
+                    <div class="chosen-tags-list js-btn--choose-tag"><span><i class="fas fa-tags"></i>選擇標籤</span></div>
+                    <div class="btn btn--create-todo js-btn--create-todo"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="todo-list"></div>
+            </div>
+            <div class="right">
+                <div class="mask"></div>
+                <div class="editor js-editor">
+                    <div class="container--top">
+                        <h1 class="title main-title">Edit</h1>
+                        <div class="btn btn--icon js-btn--delete-todo"><i class="fas fa-trash-alt"></i></div>
+                    </div>
+                    <div class="container--textarea">
+                       <div class="input js-input--edit-todo" contenteditable></div> 
+                    </div>
+                    <div class="tag-group js-tag-group--editor"></div>
+                    <div class="btn-group js-btn-group--editor">
+                        <div class="btn btn--main js-btn--edit-cancel">取消</div>
+                        <div class="btn btn--main js-btn--edit-confirm">確認</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mask js-mask"></div>
         </div>
-        <div class="left">
-            <input class="tag-input" type="text"  placeholder="新增標籤">
-            <div class="btn btn--create-tag">+</div>
-            <div class="tag-list"></div>
-        </div>
-        <div class="choose-tag-wrapper">
+        <div class="choose-tag-wrapper js-choose-tag-popup">
             <div class="choose-tag-container">
-                <h1>選擇標籤</h1>
-                <div class="tag-group">
+                <h1 class="title">選擇標籤</h1>
+                <div class="input-form">
+                    <input class="input js-input--create-tag" type="text" placeholder="新增標籤" />
+                    <div class="btn btn--icon js-btn--create-tag"><i class="fas fa-plus"></i></div>
                 </div>
-                <div class="btn-group">
-                    <div class="btn btn--tag-cancel">取消</div>
-                    <div class="btn btn--tag-confirm">確認</div>
+                <div class="tag-group js-tag-group--choose-tag"></div>
+                <div class="btn-group js-btn-group--choose-tag">
+                    <div class="btn btn--main js-btn--tag-cancel">取消</div>
+                    <div class="btn btn--main js-btn--tag-confirm">確認</div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <script src="./todolist.js"></script>
-</body>
+
+        <script src="./todolist.js"></script>
+    </body>
 </html>

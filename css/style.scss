@@ -1,88 +1,170 @@
 $white: #efefef;
-$gray: #ccc; 
+$gray: #ccc;
+$light-gray: #ddd;
 $dark-gray: #aaa;
+$light-black: #555;
+$black: #333;
+
 $btn: #555;
 $btn-hover: #666;
 $btn-click: #333;
 
-$active: #b746f0;
-$mask: rgba(0,0,0,0.5);
+$main: #b746f0;
+$mask: rgba(0, 0, 0, 0.5);
 $tag: rgb(219, 72, 72);
 $tag-chosen: rgb(42, 219, 42);
+
+$top-z-index: 100;
+$cover-screen-z-index: 1000;
+
+$shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 
 @mixin tag {
     color: $white;
     padding: 6px 12px;
     border-radius: 14px;
-    background-color: $tag;
+    background-color: $light-black;
 }
 
-
-
-*{
+* {
     position: relative;
     box-sizing: border-box;
 }
-html,body{
+html,
+body {
     user-select: none;
-    font-family: 'Noto Sans TC', sans-serif , '微軟正黑體', Arial ;
+    font-family: 'Noto Sans TC', sans-serif, '微軟正黑體', Arial;
     font-size: 16px;
     line-height: 1;
+    color: $black;
 }
 
-ul,li{
+ul,
+li {
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
-h1,h2,h3,h4,h5,h6,p{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
     margin: 0;
+    font-weight: 500;
+}
+h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+h2 {
+    font-size: 1.5rem;
 }
 
-input[type ='text']{
-    padding: 0 16px;
-    border: 2px solid $white;
-    line-height: 32px;
-    font-size: 16px;
-    border-radius: 18px;
+.mask {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $mask;
+    z-index: $top-z-index;
 }
-input[type='text']:focus{
+
+.main-title {
+    font-size: 2.25rem;
+}
+
+.input[type='text'] {
+    width: 100%;
+    flex: 1 1 auto;
+    padding: 0 1rem;
+    border: 0.125rem solid $gray;
+    line-height: 2rem;
+    font-size: 1rem;
+    border-radius: 1.125rem;
+    background-color: $gray;
+}
+.input[type='text']:focus {
     outline: none;
-    border: 2px solid $active;
+    border: 0.125rem solid $main;
 }
 
-li>.btn{
-    display: inline-block;
-    border: 1px solid #000;
-    width: 32px;
-    line-height: 32px;
-    text-align: center;
-}
-li>h3{
-    display: inline-block;
-    line-height: 2;
-}
-li{
-    display: flex;
-    align-items: center;
-}
-
-
-.btn{
-    font-size: 20px;
+.btn {
+    font-size: 1.25rem;
     color: $btn;
     cursor: pointer;
+    white-space: nowrap;
+}
+.btn--switch-mode {
+    padding: 0 0.5rem;
+    line-height: 2.25rem;
+    border-radius: 1.125rem;
+    color: $white;
+    background-color: $btn;
 
-    &:hover{
-        color:$btn-hover;
+    &:hover {
+        background-color: $btn-hover;
     }
-    &:active{
+    &:active {
+        background-color: $btn-click;
+    }
+}
+
+.btn-main {
+}
+.btn--icon {
+    width: 2.25rem;
+    line-height: 2.25rem;
+    text-align: center;
+
+    & > i {
+        pointer-events: none;
+    }
+
+    &:hover {
+        color: $btn-hover;
+    }
+    &:active {
         color: $btn-click;
     }
 }
+.btn--icon--bg {
+    border-radius: 0.25rem;
+    background-color: $gray;
+}
 
+.btn--switch {
+}
+.btn--edit-todo {
+    width: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    margin: 0 auto;
+}
+.btn--finish-todo {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 0.25rem $btn, inset 0 0 0 0.5rem $white;
 
-.choose-tag-wrapper{
+    &:hover {
+        background-color: $btn-hover;
+        box-shadow: inset 0 0 0 0.25rem $btn-hover, inset 0 0 0 0.5rem $white;
+    }
+    &:active {
+        background-color: $btn-click;
+        box-shadow: inset 0 0 0 0.25rem $btn-click, inset 0 0 0 0.5rem $white;
+    }
+}
+
+.choose-tag-wrapper {
     display: none;
     position: fixed;
     width: 100%;
@@ -94,138 +176,418 @@ li{
     align-items: center;
 
     background-color: $mask;
-    z-index: 100;
 
-    &.active{
+    &.active {
         display: flex;
+        z-index: $cover-screen-z-index;
     }
 
-    &>.choose-tag-container{
+    & > .choose-tag-container {
         width: 400px;
-        height: 400px;
-        background-color: $white;
+        // height: 400px;
         padding: 16px;
+        background-color: $white;
+        border-radius: 0.25rem;
 
-        &>.tag-group{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        & > .title {
+            font-size: 2rem;
+        }
+
+        & > .input-form {
             display: flex;
-            justify-self: flex-start;
-            flex-wrap: wrap;
-            &>.tag{
-                @include tag;
-                margin: 4px 2px;
+            align-items: center;
 
-                &.active{
-                    background-color: $tag-chosen;
+            & > .input {
+                margin-right: 1rem;
+            }
+        }
+
+        & > .tag-group {
+            flex: 1 0 auto;
+            display: flex;
+            align-content: flex-start;
+            flex-wrap: wrap;
+            padding-bottom: 0.5rem;
+            gap: 0.25rem;
+
+            & > .tag {
+                @include tag;
+
+                &.active {
+                    background-color: $main;
                 }
             }
         }
-        &>.btn-group{
+        & > .btn-group {
             display: flex;
             justify-content: space-between;
         }
     }
 }
 
-.left{
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 360px;
-    height: 100vh;
-    padding: 40px;
-
-    background-color: $white;
-}
-
-.main{
-    width: 600px;
-    min-height: 100%;
-    background-color: $white;
-    
-    &>.add{
-        width: 600px;
-        padding: 20px 40px 40px 40px;
+.left {
+    flex: 1 0 auto;
+    & > .tag-panel {
         position: fixed;
         top: 0;
-        border-bottom: 2px solid $gray;
+        left: 0;
+        width: 100vw;
+        max-width: 22.5rem;
+        height: 100vh;
+        padding: 2.5rem;
 
-        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
 
-        &>.title{
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        &>.input-container{
+        background-color: $white;
+        box-shadow: inset -1px 0 0 $gray;
+
+        & > .container--top {
             display: flex;
-            justify-content: start;
             align-items: center;
-            margin-bottom: 20px;
-
-            &>.btn--choose-tag{
-            }
-
-            &>.todo-input{
-                width: 60%;
-                margin-right: 16px;
+            & > .title {
+                flex: 1 1 auto;
             }
         }
 
-        &>.chosen-tags-group{
+        & > .input-form {
             display: flex;
-            justify-content: start;
-            flex-wrap: wrap;
-            height: 28px;
-            margin-bottom: 16px;
+            justify-content: left;
+            align-items: center;
+            width: 100%;
+            gap: 1rem;
+        }
 
-            &>.tag{
-                @include tag;
+        & > .btn-group {
+            display: none;
+            justify-content: flex-end;
+        }
 
-                &:not(:last-child){
-                    margin-right:2px;
+        & > .tag-list {
+            flex: 1 1 auto;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            overflow-y: overlay;
+            & > .tag {
+                border-radius: 0 1.25rem 1.25rem 0;
+                padding: 0.5rem 2.5rem;
+                background-color: $light-gray;
+                box-shadow: inset 4px 0 0 $dark-gray;
+
+                & > h3 {
+                    pointer-events: none;
+                    line-height: 1.5rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                &.active {
+                    box-shadow: inset 4px 0 0 $main;
+                }
+                & > .btn {
+                    width: 2rem;
+                    line-height: 2rem;
+                    position: absolute;
+                    right: 0.5rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            &.not-editing {
+                & > .tag {
+                    cursor: pointer;
+                    &:active {
+                        transform: translateY(2px);
+                    }
+                    & > .btn {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.right {
+    flex: 1 0 auto;
+    &.cover {
+        & > .editor {
+            transform: translateX(0);
+            z-index: $cover-screen-z-index;
+        }
+        & > .mask {
+            display: block;
+        }
+    }
+    & > .editor {
+        position: fixed;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s;
+
+        width: 100vw;
+        max-width: 22.5rem;
+        height: 100vh;
+        padding: 2.5rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        background-color: $white;
+
+        & > .container--top {
+            display: flex;
+            align-items: center;
+
+            & > .title {
+                flex: 1 1 auto;
+            }
+        }
+        .container--textarea {
+            & > .input {
+                width: 100%;
+                padding: 0;
+                line-height: 2.25rem;
+                font-size: 1.5rem;
+                border-radius: 0;
+                background-color: transparent;
+                &:focus {
+                    padding: 0 1rem;
+                    border: 0.125rem solid $gray;
+                    line-height: 2rem;
+                    font-size: 1rem;
+                    border-radius: 1.125rem;
+                    background-color: $gray;
+                    outline: none;
                 }
             }
         }
 
-        &>.btn--create-todo{
+        & > .tag-group {
+            display: flex;
+            flex: 1 1 auto;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            gap: 0.25rem;
+            & > .tag {
+                @include tag;
+
+                &.active {
+                    background-color: $main;
+                }
+            }
+        }
+        & > .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.main {
+    width: 37.5rem;
+    min-height: 100%;
+    background-color: $light-gray;
+    box-shadow: 0 0 0 1px $gray;
+
+    & > .create-todo-panel {
+        width: inherit;
+        padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+        background-color: $white;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        overflow: hidden;
+
+        & > .container--top {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.25rem;
+
+            & > .title {
+                flex: 1 1 auto;
+            }
+        }
+
+        & > .input-form {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            gap: 1rem;
+            & > .btn--open-tag-panel {
+                display: none;
+            }
+        }
+
+        & > .chosen-tags-list {
+            display: flex;
+            justify-content: start;
+            overflow: hidden;
+            height: 1.75rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            & > span {
+                position: absolute;
+                width: 100%;
+                border: 0.125rem solid $dark-gray;
+                border-radius: 0.875rem;
+                text-align: center;
+                line-height: 1.5rem;
+                background-color: $white;
+                color: $dark-gray;
+                opacity: 0;
+
+                &.initial {
+                    opacity: 1;
+                }
+                & > i {
+                    margin-right: 0.25rem;
+                }
+
+                &:hover {
+                    opacity: 1;
+                    border-color: $main;
+                    color: $main;
+                }
+                &:active {
+                    border-color: #9e2fd6;
+                    color: #9e2fd6;
+                }
+            }
+            & > .tag {
+                @include tag;
+
+                &:not(:last-child) {
+                    margin-right: 0.125rem;
+                }
+            }
+
+            &.u-overflow:after {
+                content: '';
+                width: 2.5rem;
+                height: 100%;
+                position: absolute;
+                right: 0;
+                background: linear-gradient(270deg, rgba($white, 1) 20%, rgba($white, 0) 100%);
+            }
+        }
+
+        & > .btn--create-todo {
             position: absolute;
             left: 0;
             bottom: 0;
             width: 100%;
-            line-height: 40px;
+            line-height: 2.5rem;
             text-align: center;
-            font-size: 32px;
+            font-size: 2rem;
             color: $dark-gray;
-            background-color: transparent;
+            background-color: $gray;
             cursor: auto;
 
-
-            &.active{
+            &.active {
                 color: $white;
-                background-color: $active;
+                background-color: $main;
                 cursor: pointer;
-                &:hover{
+                &:hover {
                     background-color: #bf5ff0;
                 }
-                &:active{
+                &:active {
                     background-color: #9e2fd6;
                 }
             }
         }
     }
-    &>.todo-list{
-        border: 1px solid red;
-        padding: 0 40px;
-        margin-top: 200px;
-    }
+    & > .todo-list {
+        margin-top: 15.25rem;
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
 
+        & > .list__item {
+            display: flex;
+            justify-content: space-between;
+            background-color: $white;
+            border-radius: 0.5rem;
+            box-shadow: $shadow;
+
+            & > .container--content {
+                width: 80%;
+                padding: 0 2rem;
+
+                & > h3 {
+                    width: 100%;
+                    padding: 1rem 0;
+                    line-height: 1.5rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+            & > .container--btn {
+                flex: 1 0 auto;
+
+                & > .btn {
+                    margin: 0 auto;
+                    &.btn--icon {
+                        margin-top: 0.5rem;
+                    }
+                    &.btn--finish-todo {
+                        margin-top: 0.75rem;
+                    }
+                }
+                & i {
+                    pointer-events: none;
+                }
+            }
+        }
+    }
 }
 
-.wrapper{
+@media screen and (max-width: 1280px) {
+    .left {
+        & > .tag-panel {
+            transition: 0.3s;
+            z-index: $cover-screen-z-index;
+            transform: translateX(-100%);
+            & > .btn-group {
+                display: flex;
+            }
+        }
+        &.cover {
+            & > .tag-panel {
+                transform: translateX(0);
+            }
+            & > .mask {
+                display: block;
+            }
+        }
+    }
+    .main > .create-todo-panel > .input-form > .btn--open-tag-panel {
+        display: block;
+    }
+}
+@media screen and (max-width: 768px) {
+    .main {
+        width: 100vw;
+    }
+}
+
+.wrapper {
     width: 100%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
 
-    background-color: $dark-gray;
+    background-color: $white;
 }
