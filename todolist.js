@@ -484,3 +484,67 @@ todoListData = loadLocalStorage();
 newTodo.todo.id = todoListData.createdTodoNum + 1;
 
 renderAll();
+
+const defaultData = {
+    todos: [
+        {
+            id: 1,
+            content: '打掃',
+            tagIds: [1],
+            completed: false,
+        },
+        {
+            id: 2,
+            content: '資料庫作業',
+            tagIds: [3],
+            completed: false,
+        },
+        {
+            id: 3,
+            content: '我的生日',
+            tagIds: [4],
+            completed: false,
+        },
+        {
+            id: 4,
+            content: '我朋友的生日',
+            tagIds: [5],
+            completed: false,
+        },
+        {
+            id: 5,
+            content: '睡覺',
+            tagIds: [1],
+            completed: false,
+        },
+    ],
+    tags: [
+        {
+            id: 1,
+            tagName: '今天',
+        },
+        {
+            id: 3,
+            tagName: '後天',
+        },
+        {
+            id: 4,
+            tagName: '7月14日',
+        },
+        {
+            id: 5,
+            tagName: '7月15日',
+        },
+    ],
+    createdTodoNum: 5,
+    createdTagNum: 5,
+};
+
+function useDefaultValue() {
+    todoListData = defaultData;
+    storeLocalStorage(todoListData);
+    newTodo.todo.id = todoListData.createdTodoNum + 1;
+    renderAll();
+}
+
+useDefaultValue();
