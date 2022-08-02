@@ -166,7 +166,6 @@ function inputCreateTodo() {
 }
 function inputEditTodo() {
     editingTodo.todoBuffer.content = this.textContent;
-    // console.log( editingTodo.todoBuffer.content)
 }
 function createTodo() {
     todoListData.todos.push(newTodo.todo);
@@ -261,6 +260,7 @@ function clickEditorBtnGroup(e) {
         editingTodo.todo.tagIds = editingTodo.todoBuffer.tagIds.slice(0);
         storeLocalStorage(todoListData);
         renderTodoList();
+
         editingTodo = {
             todo: null,
             todoBuffer: {
@@ -270,6 +270,7 @@ function clickEditorBtnGroup(e) {
         };
         renderEditor();
         editor.parentNode.classList.remove('cover');
+
         return;
     }
     if (e.target.matches('.js-btn--edit-cancel')) {
@@ -294,7 +295,7 @@ todoList.addEventListener('click', clickTodoList);
 createTodoPanel.querySelector('.js-btn--create-todo').addEventListener('click', clickBtnCreateTodo);
 createTodoPanel.querySelector('.js-btn--switch-mode').addEventListener('click', clickBtnSwitchMode);
 createTodoPanel.querySelector('.js-btn--choose-to-delete').addEventListener('click', clickBtnChooseToDelete);
-editor.querySelector('.js-input--edit-todo').addEventListener('change', inputEditTodo);
+editor.querySelector('.js-input--edit-todo').addEventListener('input', inputEditTodo);
 editor.querySelector('.js-btn-group--editor').addEventListener('click', clickEditorBtnGroup);
 editor.querySelector('.js-btn--delete-todo').addEventListener('click', clickBtnDeleteTodo);
 
