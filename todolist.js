@@ -289,7 +289,7 @@ function clickBtnChooseToDelete() {
     listIsChoosingToDelete = !listIsChoosingToDelete;
     renderTodoList();
 }
-todoInput.addEventListener('keyup', inputCreateTodo);
+todoInput.addEventListener('change', inputCreateTodo);
 todoList.addEventListener('click', clickTodoList);
 createTodoPanel.querySelector('.js-btn--create-todo').addEventListener('click', clickBtnCreateTodo);
 createTodoPanel.querySelector('.js-btn--switch-mode').addEventListener('click', clickBtnSwitchMode);
