@@ -17,6 +17,12 @@ body {
   color: #333;
 }
 
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+
 ul,
 li {
   margin: 0;
@@ -42,6 +48,13 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
+}
+
+[contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+   -ms-user-select: text;
+       user-select: text;
 }
 
 .mask {
@@ -223,8 +236,9 @@ h2 {
 
 .choose-tag-wrapper > .choose-tag-container > .tag-group > .tag {
   color: #efefef;
-  padding: 6px 12px;
-  border-radius: 14px;
+  font-size: 1rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.875rem;
   background-color: #555;
 }
 
@@ -254,7 +268,7 @@ h2 {
   width: 100vw;
   max-width: 22.5rem;
   height: 100vh;
-  padding: 2.5rem;
+  padding: 2.5rem 2.5rem 5rem 2.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -331,7 +345,8 @@ h2 {
 
 .left > .tag-panel > .tag-list > .tag > h3 {
   pointer-events: none;
-  line-height: 1.5rem;
+  font-size: 1.2rem;
+  padding: 0.15rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -393,7 +408,7 @@ h2 {
   width: 100vw;
   max-width: 22.5rem;
   height: 100vh;
-  padding: 2.5rem;
+  padding: 2.5rem 2.5rem 5rem 2.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -455,8 +470,9 @@ h2 {
 
 .right > .editor > .tag-group > .tag {
   color: #efefef;
-  padding: 6px 12px;
-  border-radius: 14px;
+  font-size: 1rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.875rem;
   background-color: #555;
 }
 
@@ -533,18 +549,23 @@ h2 {
       -ms-flex-pack: start;
           justify-content: start;
   overflow: hidden;
-  height: 1.75rem;
   margin-bottom: 1rem;
   cursor: pointer;
 }
 
 .main > .create-todo-panel > .chosen-tags-list > span {
+  display: block;
   position: absolute;
   width: 100%;
+  height: 1.75rem;
+  left: 0;
+  top: 0;
   border: 0.125rem solid #aaa;
   border-radius: 0.875rem;
   text-align: center;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.25rem 0;
   background-color: #efefef;
   color: #aaa;
   opacity: 0;
@@ -552,6 +573,8 @@ h2 {
 
 .main > .create-todo-panel > .chosen-tags-list > span.initial {
   opacity: 1;
+  position: relative;
+  left: unset;
 }
 
 .main > .create-todo-panel > .chosen-tags-list > span > i {
@@ -571,8 +594,9 @@ h2 {
 
 .main > .create-todo-panel > .chosen-tags-list > .tag {
   color: #efefef;
-  padding: 6px 12px;
-  border-radius: 14px;
+  font-size: 1rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.875rem;
   background-color: #555;
 }
 
@@ -644,22 +668,26 @@ h2 {
 }
 
 .main > .todo-list > .list__item > .container--content {
-  width: 80%;
-  padding: 0 2rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: 0 1rem;
 }
 
 .main > .todo-list > .list__item > .container--content > h3 {
+  font-size: 1.2rem;
   width: 100%;
   padding: 1rem 0;
-  line-height: 1.5rem;
+  line-height: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .main > .todo-list > .list__item > .container--btn {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  padding: 0 0.5rem;
 }
 
 .main > .todo-list > .list__item > .container--btn > .btn {
@@ -671,7 +699,7 @@ h2 {
 }
 
 .main > .todo-list > .list__item > .container--btn > .btn.btn--finish-todo {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .main > .todo-list > .list__item > .container--btn i {
