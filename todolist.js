@@ -294,7 +294,7 @@ todoList.addEventListener('click', clickTodoList);
 createTodoPanel.querySelector('.js-btn--create-todo').addEventListener('click', clickBtnCreateTodo);
 createTodoPanel.querySelector('.js-btn--switch-mode').addEventListener('click', clickBtnSwitchMode);
 createTodoPanel.querySelector('.js-btn--choose-to-delete').addEventListener('click', clickBtnChooseToDelete);
-editor.querySelector('.js-input--edit-todo').addEventListener('keyup', inputEditTodo);
+editor.querySelector('.js-input--edit-todo').addEventListener('change', inputEditTodo);
 editor.querySelector('.js-btn-group--editor').addEventListener('click', clickEditorBtnGroup);
 editor.querySelector('.js-btn--delete-todo').addEventListener('click', clickBtnDeleteTodo);
 
